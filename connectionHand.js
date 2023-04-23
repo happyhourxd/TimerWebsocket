@@ -52,8 +52,13 @@ io.on('connection', (socket) => {
                 } else {
                     io.emit('playPause', ({id:timer.id, data:"Pause"}));
                 }
-                io.emit('currentTime', ({id:timer.id, time: getHMS((new Date().getTime()/1000) + timer.time)}))
+                if(timer.countUp) {
+                    io.emit("currentTime", ({id:timer.id, time:getHMS((new Date().getTime()/1000) - timer.time)}))
+                } else {
+                    io.emit('currentTime', ({id:timer.id, time: getHMS((new Date().getTime()/1000) + timer.time)}))
+                }
                 io.emit('name', ({id:timer.id, name:timer.name}));
+                io.emit('color', ({id:timer.id, color:timer.color}));
             }
         }, 250)
     }
@@ -62,9 +67,11 @@ io.on('connection', (socket) => {
 
     if(timerArray.length > 0) {
         for(var t of timerArray) {
+            if(t.inr != null){
             t.pause();
             pausedTimers.push(t);
             io.emit('setTimers', {id:timer.id, time:getHMS2(timer.time)});
+            }
         }
     }
 
@@ -86,11 +93,11 @@ io.on('connection', (socket) => {
     })
 
     socket.on('removeTimer',(id) => {;
-        timers--;
+        timers = 0;
         for(var timer of timerArray) {
-            if (timer.getId() == id)
+            if (timer.id == id)
             {
-                io.emit('removeTimer', timer.getId());
+                io.emit('removeTimer', timer.id);
                 timer.remove();
                 timerArray.splice(timerArray.indexOf(timer), 1);
             }

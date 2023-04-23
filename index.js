@@ -1,7 +1,8 @@
 var socket = io();
-var TimerDiv = document.getElementById("TimerDiv");
+var TimerDiv = document.getElementById("timer-container");
 var divArray = [];
 var sub = false;
+var client = false;
 
 var buttonArray = [5,30,60,300,900,1800,3600];
 
@@ -9,6 +10,19 @@ var buttonArray = [5,30,60,300,900,1800,3600];
 document.getElementById("makeTimerButton").addEventListener('click', function() {
     socket.emit("makeATimer");
 })
+
+document.getElementById("button").addEventListener("click", () => {
+    document.getElementById("makeTimerButton").style.display = "none";
+    document.getElementById("button").style.display = "none";
+    client = true;
+    for (var div of divArray) {
+      var examples = div.querySelectorAll(".example");
+      for (var example of examples) {
+        example.style.display = "none";
+      }
+    }
+  });
+
 
 //S->C make a timer
 socket.on('makeTimer', function(id) {
@@ -21,6 +35,14 @@ socket.on('displayForum', (id) => {
         if (Div.id === "timerSection" + id) {
             Div.querySelector("#title").style.display = "none";
             Div.querySelector("#newName").style.display = "block";
+        }
+    }
+})
+
+socket.on("color", ({id, color}) => {
+    for(var div of divArray) {
+        if(div.id === "timerSection" + id) {
+            div.querySelector("#time").style.color = color;
         }
     }
 })
@@ -99,6 +121,7 @@ function newDiv(id){
 
     //makes a new Div
     var newTimerDiv = TimerDiv.cloneNode(true);
+    newTimerDiv.classList.add('timer-section');
     newTimerDiv.id = "timerSection" + id;
     document.body.appendChild(newTimerDiv);
     divArray.push(newTimerDiv);
@@ -152,6 +175,9 @@ function newDiv(id){
         sub = !sub;
     })
     newTimerDiv.style.display = "block";
+    if(client) {
+        client2();
+    }
 }
 
 //C->S adding time
@@ -159,3 +185,12 @@ function addSubTime(amt, id, sub){
     socket.emit('timeManip', amt, id, sub);
 }
 
+
+function client2() {
+    for (var div of divArray) {
+        var examples = div.querySelectorAll(".example");
+        for (var example of examples) {
+          example.style.display = "none";
+        }
+      }
+}
