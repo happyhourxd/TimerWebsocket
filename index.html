@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <title>Timer</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+
+</head>
+
+<body>
+  <button id="makeTimerButton">Make a new timer</button>
+
+  <div id="TimerDiv" style="display: none;"</div>
+    <!-- Timer 1 -->
+    <h1 id="title">Station 1 </h1>
+    <form id="newName"style="display: none;">
+      <label for="nameInput">Enter The Timer name:</label>
+      <input type="text" id="nameInput">
+    </form>
+    
+    <button id="changeName" style="display: inline;" >Change Name</button>
+    <br>
+    <button id="cd1">Count Down</button>
+    <button id="cu1">Count Up</button>
+    <h1 id="time">00:00:00</h1>
+    <button id="button1">Play</button>
+    <br>
+    <button id="pm1">+</button>
+    <button id="button5">5s</button>
+    <button id="button30">30s</button>
+    <button id="button60">1m</button>
+    <button id="button300">5m</button>
+    <button id="button900">15m</button>
+    <button id="button1800">30m</button>
+    <button id="button3600">1h</button>    
+    <h3 id="curtime">Currtime</h3>
+    <button id="removeTimerButton">Remove This Timer</button>
+  </div>
+</body>
+<script src="/index.js", src="/socket.io/socket.io.js"></script>
+</html>
