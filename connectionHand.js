@@ -121,7 +121,7 @@ io.on('connection', (socket) => {
     socket.on('count', (id)=> {
         for(var timer of timerArray) {
             if(timer.id == id) {
-                if(timer.inr == null) {
+                if(timer.isCounting == false) {
                     timer.count();
                 } else {
                     timer.pause();
