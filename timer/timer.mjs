@@ -17,7 +17,6 @@ export class timer {
                 clearInterval(this.inr);
                 this.inr = null
             }
-
             if(this.countUp) {
                 this.color = "green";
                 this.inr = setInterval(() => {
