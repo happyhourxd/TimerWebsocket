@@ -27,6 +27,7 @@ export class timer {
                 this.inr = setInterval(() => {
                     if(this.time > 0) this.time--;
                     if(this.time == 0) {
+                        this.isCounting = false;
                         this.color = "black";
                         clearInterval(this.inr);
                         this.inr = null;
