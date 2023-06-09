@@ -57,10 +57,13 @@ socket.on('hideForum', (id) => {
 })
 
 //S->C when a new client joins populate them with the current timers
-socket.on('newClient', function(timerArray) {  
+socket.on('newClient', function(timerArray) {
+    for(var Div of divArray) {
+        Div.remove();
+    }
     for(var timer of timerArray) {
-    var id = timer.id;
-    newDiv(id);
+        var id = timer.id;
+        newDiv(id);
     }
 })
 
