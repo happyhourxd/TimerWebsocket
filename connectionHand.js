@@ -133,9 +133,16 @@ io.on('connection', (socket) => {
     socket.on('changeName', ({id, name}) => {
         for(var timer of timerArray) {
             if(timer.id == id) {
+                timer.name = name;
+            }
+        }
+    })
+
+    socket.on('displayForum', ({id}) => {
+        for(var timer of timerArray) {
+            if(timer.id == id) {
                 if(namechange) {
                     namechange = false;
-                    timer.name = name;
                     io.emit('hideForum', timer.id);
                 } else {
                     namechange = true;
