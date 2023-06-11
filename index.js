@@ -128,6 +128,13 @@ function newDiv(id){
     newTimerDiv.id = "timerSection" + id;
     document.body.appendChild(newTimerDiv);
     divArray.push(newTimerDiv);
+
+    // var form = document.getElementById("newName");
+    // newTimerDiv.querySelector("#nameInput").addEventListener("keydown", function(e) {
+    //     if (e.key === "Enter") {
+    //       e.preventDefault();
+    //     }
+    // })
     
 
     //adds the remove timer funtionality
@@ -152,8 +159,13 @@ function newDiv(id){
     })
 
     //gets the info from the forum and makes it appear
-    newTimerDiv.querySelector("#changeName").addEventListener("click", function() {
-        socket.emit('changeName', ({id:id, name:(newTimerDiv.querySelector("#nameInput").value)}));
+    newTimerDiv.querySelector("#title").addEventListener("click", function() {
+        socket.emit('displayForum', ({id:id}));
+        newTimerDiv.querySelector("#nameInput").addEventListener("keydown", function(e) {
+            if (e.key === "Enter" || e.keycode === 13) {
+                socket.emit('changeName', ({id:id, name:(newTimerDiv.querySelector("#nameInput").value)}));
+            }
+        });
     })
 
     //reset button
