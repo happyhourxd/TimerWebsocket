@@ -41,6 +41,7 @@ export class timer {
         if(this.inr != null) {
             clearInterval(this.inr);
             this.inr = null;
+            this.color = "orange";
         }
         this.isCounting = false;
     }
