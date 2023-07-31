@@ -7,7 +7,7 @@ export class timer {
         this.inr = null; //the counting innerval
         this.isCounting = false;
         this.name = 1;
-        this.color = "black"
+        this.color = "white"
     }
 
     count() {
@@ -28,7 +28,7 @@ export class timer {
                     if(this.time > 0) this.time--;
                     if(this.time == 0) {
                         this.isCounting = false;
-                        this.color = "black";
+                        this.color = "white";
                         clearInterval(this.inr);
                         this.inr = null;
                     }
