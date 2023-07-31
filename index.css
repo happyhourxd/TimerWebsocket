@@ -2,7 +2,8 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
-  background-color: #f7f7f7;
+  background-color: #1a1a1a; /* Dark background color */
+  color: #f7f7f7; /* Light text color */
   font-family: Arial, sans-serif;
 }
 
@@ -16,31 +17,31 @@ body {
 
 /* Style for each timer section */
 .timer-section {
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: #262626; /* Darker background color */
+  border: 1px solid #444;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Slightly darker shadow */
   transition: box-shadow 0.3s ease-in-out;
 }
 
 .timer-section:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Darker shadow on hover */
 }
 
 .timer-section h1 {
   margin: 0;
   font-size: 1.5em;
   font-weight: bold;
-  color: #333;
+  color: #f7f7f7; /* Light text color */
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .timer-section button {
   margin-right: 5px;
-  background-color: #4CAF50;
-  color: #fff;
+  background-color: #e482e7;
+  color: #f7f7f7; /* Light text color */
   border: none;
   padding: 8px 12px;
   text-align: center;
@@ -53,38 +54,37 @@ body {
 }
 
 .timer-section button:hover {
-  background-color: #3e8e41;
+  background-color: #e482e7;
 }
 
 .timer-section #time {
   font-size: 3em;
   margin: 10px 0;
-  color: #333;
+  color: #f7f7f7; /* Light text color */
 }
 
 .timer-section #curtime {
   margin-top: 10px;
   font-size: 14px;
-  color: #666;
+  color: #bbb; /* Slightly lighter text color */
 }
 
-.button {
-  display: inline-block;
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
+/* Style for "Make a new timer" and "Client only" buttons */
+#makeTimerButton, #button {
+  background-color: #262626; /* Darker background color */
+  color: #f7f7f7; /* Light text color */
+  border: 1px solid #444;
+  padding: 8px 12px;
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+  margin-bottom: 10px;
 }
 
-.button:hover {
-  background-color: #3e8e41;
+#makeTimerButton:hover, #button:hover {
+  background-color: #905392;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Slightly darker shadow on hover */
 }
