@@ -1,6 +1,6 @@
 Will need node.js and socket.io
 
-download this exe [https://github.com/happyhourxd/TimerWebsocket/releases/download/timer/timer.exe] and add node_models into the TimerWebsocket folder
+download this [exe][https://github.com/happyhourxd/TimerWebsocket/releases/download/timer/timer.exe] and add node_models into the TimerWebsocket folder
 
 
 
